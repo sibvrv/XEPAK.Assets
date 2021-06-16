@@ -1,0 +1,119 @@
+:root {
+    --blinktime: 0.3s;
+}
+
+body {
+    background-color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+#hit_indicator {
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hit {
+    opacity: 0;
+}
+
+.blink {
+    opacity: 1;
+    animation: fade var(--blinktime) linear;
+}
+
+@keyframes fade {
+    0%, 80% {
+        opacity: 1
+    }
+    80%, 100% {
+        opacity: 0
+    }
+}
+
+#crosshair {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15px, -15px);
+}
+
+#health {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+
+#damage {
+    position: fixed;
+    height: 129px;
+    width: 129px;
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    --stroke-width: 10px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top: var(--stroke-width) solid red;
+    border-bottom: var(--stroke-width) solid transparent;
+    border-left: var(--stroke-width) solid transparent;
+    border-right: var(--stroke-width) solid transparent;
+}
+
+.damage-opacity {
+    opacity: 0;
+}
+
+
+#current-health {
+    color: white;
+    font-family: "Helvetica";
+    font-size: 43px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+#max-health {
+    color: white;
+    font-family: "Helvetica";
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.health-unit {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transform: skewX(-15deg);
+    background: rgba(255, 255, 255, 0.8);
+
+}
+
+
+.red {
+    background: rgba(255, 0, 0, 0.9);
+    animation: turnred 0.3s linear;
+}
+
+@keyframes turnred {
+    0%, 80% {
+        background: rgba(255, 255, 255, 0.8)
+    }
+    80%, 100% {
+        background: rgba(255, 0, 0, 0.9)
+    }
+}

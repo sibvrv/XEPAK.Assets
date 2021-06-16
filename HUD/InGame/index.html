@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>HUD</title>
+    <meta name="description" content="HUD Test">
+    <meta name="author" content="HappyTorso">
+
+</head>
+
+<body>
+
+<div id="crosshair">
+    <svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+        <desc>Created with Sketch.</desc>
+        <defs></defs>
+        <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Artboard-Copy" transform="translate(-1.000000, -1.000000)" fill="#FFFFFF">
+                <rect id="Rectangle-2" x="14" y="1" width="3" height="10"></rect>
+                <rect id="Rectangle-2-Copy" x="14" y="20" width="3" height="10"></rect>
+                <rect id="Rectangle-3" x="14" y="14" width="3" height="3"></rect>
+                <rect id="Rectangle-4" x="1" y="14" width="10" height="3"></rect>
+                <rect id="Rectangle" x="20" y="14" width="10" height="3"></rect>
+            </g>
+        </g>
+    </svg>
+</div>
+
+<div id="hit_indicator" class="hit">
+    <svg width="81px" height="81px" viewBox="0 0 81 81" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+        <desc>Created with Sketch.</desc>
+        <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                <stop stop-color="#FC00FF" offset="0%"></stop>
+                <stop stop-color="#FF0000" offset="100%"></stop>
+            </linearGradient>
+        </defs>
+        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Hit-Indicator" transform="translate(-2.000000, -2.000000)" fill="url(#linearGradient-1)">
+                <g id="Hit">
+                    <g transform="translate(69.849242, 14.849242) rotate(45.000000) translate(-69.849242, -14.849242) translate(67.349242, -3.650758)"
+                       id="Oval">
+                        <path d="M2.5,37 C6.66273808,37 2.91586572,28.7172679 2.91586572,18.5 C2.91586572,8.28273213 2.5,0 2.5,0 C2.5,0 1.97064115,8.28273213 1.97064115,18.5 C1.97064115,28.7172679 -1.66273808,37 2.5,37 Z"></path>
+                    </g>
+                    <g transform="translate(69.849242, 69.849242) rotate(135.000000) translate(-69.849242, -69.849242) translate(67.349242, 51.349242)"
+                       id="Oval">
+                        <path d="M2.5,37 C6.66273808,37 2.91586572,28.7172679 2.91586572,18.5 C2.91586572,8.28273213 2.5,0 2.5,0 C2.5,0 1.97064115,8.28273213 1.97064115,18.5 C1.97064115,28.7172679 -1.66273808,37 2.5,37 Z"></path>
+                    </g>
+                    <g transform="translate(14.849242, 69.849242) rotate(225.000000) translate(-14.849242, -69.849242) translate(12.349242, 51.349242)"
+                       id="Oval">
+                        <path d="M2.5,37 C6.66273808,37 2.91586572,28.7172679 2.91586572,18.5 C2.91586572,8.28273213 2.5,0 2.5,0 C2.5,0 1.97064115,8.28273213 1.97064115,18.5 C1.97064115,28.7172679 -1.66273808,37 2.5,37 Z"></path>
+                    </g>
+                    <g transform="translate(14.849242, 14.849242) rotate(-45.000000) translate(-14.849242, -14.849242) translate(12.349242, -3.650758)"
+                       id="Oval">
+                        <path d="M2.5,37 C6.66273808,37 2.91586572,28.7172679 2.91586572,18.5 C2.91586572,8.28273213 2.5,0 2.5,0 C2.5,0 1.97064115,8.28273213 1.97064115,18.5 C1.97064115,28.7172679 -1.66273808,37 2.5,37 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+</div>
+<div id="health">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"></path>
+    </svg>
+</div>
+
+<div id="damage" class="damage-opacity">
+</div>
+</body>
+
+<div id="health">
+    <div><span id="current-health">250</span><span id="max-health" class="smaller">/250</span></div>
+    <div>
+        <div class="health-unit"></div>
+        <div class="health-unit"></div>
+        <div class="health-unit"></div>
+        <div class="health-unit"></div>
+        <div class="health-unit"></div>
+    </div>
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js'></script>
+<script src="./script.js"></script>
+</html>
