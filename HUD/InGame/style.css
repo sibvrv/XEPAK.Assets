@@ -4,13 +4,14 @@
 
 body {
     background-color: black;
+    font-family: "Helvetica";
 }
 
 .hidden {
     display: none;
 }
 
-#hit_indicator {
+.hit_indicator {
     opacity: 0;
     position: fixed;
     top: 50%;
@@ -18,12 +19,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.hit {
-    opacity: 0;
-}
-
 .blink {
-    opacity: 1;
     animation: fade var(--blinktime) linear;
 }
 
@@ -36,22 +32,18 @@ body {
     }
 }
 
-#crosshair {
+.health {
+    transform: translateX(0) rotateY(25deg) rotateZ(-4deg);
+}
+
+.crosshair {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-15px, -15px);
 }
 
-#health {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin-left: 50px;
-    margin-bottom: 50px;
-}
-
-#damage {
+.damage {
     position: fixed;
     height: 129px;
     width: 129px;
@@ -59,6 +51,7 @@ body {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    opacity: 0;
 
     --stroke-width: 10px;
     box-sizing: border-box;
@@ -69,24 +62,15 @@ body {
     border-right: var(--stroke-width) solid transparent;
 }
 
-.damage-opacity {
-    opacity: 0;
-}
-
-
-#current-health {
+.current-health {
     color: white;
-    font-family: "Helvetica";
-    font-size: 43px;
-    font-style: italic;
+    font-size: 30px;
     font-weight: 600;
 }
 
-#max-health {
+.max-health {
     color: white;
-    font-family: "Helvetica";
-    font-size: 22px;
-    font-style: italic;
+    font-size: 20px;
     font-weight: 100;
 }
 
@@ -100,7 +84,6 @@ body {
     border-radius: 4px;
     transform: skewX(-15deg);
     background: rgba(255, 255, 255, 0.8);
-
 }
 
 
@@ -116,4 +99,145 @@ body {
     80%, 100% {
         background: rgba(255, 0, 0, 0.9)
     }
+}
+
+.ui * {
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.ui-main-item {
+    position: absolute;
+    bottom: 90px;
+    right: 90px;
+    color: #bbb;
+    text-transform: uppercase;
+    perspective: 500px;
+}
+
+.ui-player-info {
+    position: absolute;
+    bottom: 90px;
+    left: 90px;
+    color: #bbb;
+    text-transform: uppercase;
+    perspective: 500px;
+}
+
+.gun {
+    border: 4px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 2px;
+    transition: transform 1s;
+    transform: translateX(0) rotateY(-25deg) rotateZ(4deg);
+    display: block;
+    width: 210px;
+    height: 82px;
+}
+
+.name {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+}
+
+.lvl {
+    background: rgba(255, 255, 255, 0.4);
+    width: 24px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    padding: 0 4px 0 0;
+    color: #121212;
+    text-align: right;
+}
+
+.lvl:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -7px;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 7px solid transparent;
+}
+
+.dmg-type {
+    display: block;
+    background: #77aeae;
+    text-align: center;
+    width: 40px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 3px;
+    font-weight: 400;
+    color: #121212;
+    position: absolute;
+    top: 20px;
+}
+
+.ammunition {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    text-align: right;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.ammunition.bullet-container {
+    bottom: -20px;
+    top: 90px;
+    right: -6px;
+    width: 100%;
+    height: 220px;
+}
+
+.ammunition .bullet {
+    display: inline-block;
+    float: right;
+    padding: 0;
+    margin: 2px 2px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3px 3px 0 0;
+    height: 12px;
+    width: 5px;
+}
+
+.suppressor:after {
+    width: 92px;
+    height: 6px;
+    border: 1px solid #999999;
+    display: block;
+    content: "";
+    position: absolute;
+    left: -2px;
+    bottom: -2px;
+}
+
+.suppressor {
+    background: #aeaeae;
+    width: 70px;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 5px 5px;
+}
+
+.suppressor:before {
+    content: "SUP";
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: -19px;
+    left: -2px;
+    letter-spacing: 1px;
 }

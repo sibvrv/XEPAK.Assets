@@ -11,7 +11,7 @@ var hud = function () {
     };
 
     this.updateMaxHealth = function (qty) {
-        document.querySelector("#max-health").innerHTML = "/" + qty;
+        document.querySelector(".max-health").innerHTML = "/" + qty;
     };
 
     this.updateHealth = function (qty) {
@@ -20,7 +20,7 @@ var hud = function () {
         } else {
             this.currentHealth = 0;
         }
-        document.querySelector("#current-health").innerHTML = this.currentHealth;
+        document.querySelector(".current-health").innerHTML = this.currentHealth;
         //this.updateBars();
     };
 
@@ -36,28 +36,27 @@ var hud = function () {
             "--blinktime",
             this.damage / 100 + 0.2 + "s"
         ); //set how long damage indicator displays
-        document
-            .querySelector("#damage")
-            .style.setProperty("--stroke-width", this.damage / 10 + 5 + "px"); //set how thick the damage indicator is
-        document.querySelector("#damage").style.transform =
-            "rotate(" + this.direction + "deg) translate(-50%,-50%)"; //set indicator's rotation
-        document.querySelector("#damage").className = "damage-opacity"; //reset classes
+        const damageElement = document.querySelector(".damage");
+
+        damageElement.style.setProperty("--stroke-width", this.damage / 10 + 5 + "px"); //set how thick the damage indicator is
+        damageElement.style.transform = "rotate(" + this.direction + "deg) translate(-50%,-50%)"; //set indicator's rotation
+        damageElement.classList.remove("blink");
 
         //now do some hack to replay the animation
         window.requestAnimationFrame(function (time) {
             window.requestAnimationFrame(function (time) {
-                document.querySelector(".damage-opacity").className =
-                    "damage-opacity blink";
+                damageElement.classList.add('blink');
             });
         });
     };
 
     this.hit = function () {
-        document.querySelector("#hit_indicator").className = "hit";
+        const indicatorElement = document.querySelector(".hit_indicator");
+        indicatorElement.classList.remove('blink');
         document.documentElement.style.setProperty("--blinktime", "0.3s");
         window.requestAnimationFrame(function (time) {
             window.requestAnimationFrame(function (time) {
-                document.querySelector(".hit").className = "hit blink";
+                indicatorElement.classList.add('blink');
             });
         });
     };
