@@ -2,12 +2,18 @@ var hud = function () {
     this.direction = 45;
     this.damage = 50;
     this.maxHealth = 250;
-    this.previousHealth = this.currentHealth = this.maxHealth;
+    this.currentHealth = this.maxHealth;
 
     this.updateBars = function () {
         var deadbars = Math.floor(5 * (this.maxHealth - this.currentHealth) / this.maxHealth);
-        document.querySelector(".health-unit:nth-last-child(" + deadbars + ")").className = "health-unit red";
-
+        const list = document.querySelectorAll(".health-unit");
+        for (let i = list.length; --i >= 0;) {
+            if (deadbars < (5 - i)) {
+                list[i].classList.remove('red');
+            } else {
+                list[i].classList.add('red');
+            }
+        }
     };
 
     this.updateMaxHealth = function (qty) {
@@ -21,7 +27,10 @@ var hud = function () {
             this.currentHealth = 0;
         }
         document.querySelector(".current-health").innerHTML = this.currentHealth;
-        //this.updateBars();
+
+        // const progress = this.currentHealth / this.maxHealth;
+
+        this.updateBars();
     };
 
     this.resetHealth = function () {
@@ -43,22 +52,18 @@ var hud = function () {
         damageElement.classList.remove("blink");
 
         //now do some hack to replay the animation
-        window.requestAnimationFrame(function (time) {
-            window.requestAnimationFrame(function (time) {
-                damageElement.classList.add('blink');
-            });
-        });
+        setTimeout(function (time) {
+            damageElement.classList.add('blink');
+        }, 1);
     };
 
     this.hit = function () {
         const indicatorElement = document.querySelector(".hit_indicator");
         indicatorElement.classList.remove('blink');
         document.documentElement.style.setProperty("--blinktime", "0.3s");
-        window.requestAnimationFrame(function (time) {
-            window.requestAnimationFrame(function (time) {
-                indicatorElement.classList.add('blink');
-            });
-        });
+        setTimeout(function (time) {
+            indicatorElement.classList.add('blink');
+        }, 1);
     };
 };
 
