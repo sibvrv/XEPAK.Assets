@@ -41,6 +41,8 @@ body {
 
     padding: 12px;
     color: #bbb;
+
+    display: flex;
 }
 
 .crosshair {
@@ -269,4 +271,15 @@ body {
     top: -19px;
     left: -2px;
     letter-spacing: 1px;
+}
+
+.human-body {
+    fill: #57c9d5;
+    padding-right: 14px;
+}
+
+.health-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
