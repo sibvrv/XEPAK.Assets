@@ -23,6 +23,10 @@ body {
     animation: fade var(--blinktime) linear;
 }
 
+.hitBlink {
+    animation: fade 0.3s linear;
+}
+
 @keyframes fade {
     0%, 80% {
         opacity: 1
@@ -54,8 +58,8 @@ body {
 
 .damage {
     position: fixed;
-    height: 129px;
-    width: 129px;
+    height: 169px;
+    width: 169px;
     transform-origin: top left;
     transform: translate(-50%, -50%);
     top: 50%;
