@@ -9,6 +9,70 @@
 <body>
 
 <div class="ui">
+    <div class="compass-tape">
+        <script>
+            const step = 10;
+            const total = Math.floor( 360 / step );
+
+            let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute('viewBox', `0 0 ${total * 30} 30`);
+            let svgNS = svg.namespaceURI;
+
+            let g = document.createElementNS(svgNS, 'g');
+            g.setAttribute('fill', '#95B3D7');
+            svg.appendChild(g);
+
+            let textElement = document.createElementNS(svgNS, 'text');
+            textElement.setAttribute('y', 20);
+            textElement.setAttribute('fill', '#fff');
+            textElement.setAttribute('font-weight', "700");
+            textElement.setAttribute('font-size', "9");
+            textElement.setAttribute('font-family', "sans-serif");
+            svg.appendChild(textElement);
+
+            function rect(x, y, h) {
+                let rectElement = document.createElementNS(svgNS, 'rect');
+                rectElement.setAttribute('x', x - 0.5);
+                rectElement.setAttribute('y', y);
+                rectElement.setAttribute('width', 1);
+                rectElement.setAttribute('height', h);
+                g.appendChild(rectElement);
+            }
+
+            function text(x, label) {
+                let tspan = document.createElementNS(svgNS, 'tspan');
+                tspan.setAttribute('x', x);
+                tspan.setAttribute('text-anchor', "middle");
+
+                var t = document.createTextNode(`${label}`);
+                tspan.appendChild(t);
+
+                textElement.appendChild(tspan);
+            }
+
+            const direction = {
+                0: 'N',
+                45: 'NE',
+                90: 'E',
+                135: 'SE',
+                180: 'S',
+                225: 'SW',
+                270: 'W',
+                315: 'NW'
+            }
+
+            for (let i = 0; i <= total; i++) {
+                rect(i * 30, 0, 10);
+                rect(i * 30 + 15, 4, 6);
+
+                const angle = (i % total) * step;
+                text(i * 30, angle % 45 === 0 ? direction[angle] : angle);
+            }
+
+            document.currentScript.insertAdjacentElement('afterEnd', svg);
+        </script>
+    </div>
+
     <div class="crosshair">
         <svg width="29px" height="29px" viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg">
             <g stroke="none" fill="#FFFFFF">

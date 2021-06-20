@@ -40,6 +40,50 @@ var hud = function () {
         this.updateMaxHealth(Math.round(this.maxHealth));
     };
 
+    this.updateHumanBody = (() => {
+        const elements = {
+            head: document.querySelector('.human-body .head'),
+            shoulder: document.querySelector('.human-body .shoulder'),
+            arm: document.querySelector('.human-body .arm'),
+            hands: document.querySelector('.human-body .hands'),
+            chest: document.querySelector('.human-body .chest'),
+            stomach: document.querySelector('.human-body .stomach'),
+            legs: document.querySelector('.human-body .legs'),
+        }
+
+        return (type, state) => {
+            elements[type].style.fill = state;
+        };
+    })();
+
+    this.damageHead = () => {
+        this.updateHumanBody('head', 'red');
+    }
+
+    this.damageShoulder = () => {
+        this.updateHumanBody('shoulder', 'red');
+    }
+
+    this.damageArm = () => {
+        this.updateHumanBody('arm', 'red');
+    }
+
+    this.damageHands = () => {
+        this.updateHumanBody('hands', 'red');
+    }
+
+    this.damageChest = () => {
+        this.updateHumanBody('chest', 'red');
+    }
+
+    this.damageStomach = () => {
+        this.updateHumanBody('stomach', 'red');
+    }
+
+    this.damageLegs = () => {
+        this.updateHumanBody('legs', 'red');
+    }
+
     this.takeDamage = (() => {
         const damageElement = document.querySelector(".damage");
         return () => {
@@ -78,6 +122,14 @@ window.onload = function () {
     var directionController = gui.add(fpshud, "direction", 0, 360);
     var damageController = gui.add(fpshud, "damage", 10, 100);
     gui.add(fpshud, "takeDamage");
+    gui.add(fpshud, 'damageHead');
+    gui.add(fpshud, 'damageShoulder');
+    gui.add(fpshud, 'damageArm');
+    gui.add(fpshud, 'damageHands');
+    gui.add(fpshud, 'damageChest');
+    gui.add(fpshud, 'damageStomach');
+    gui.add(fpshud, 'damageLegs');
+
 
     maxHealthController.onFinishChange(function (value) {
         fpshud.resetHealth();

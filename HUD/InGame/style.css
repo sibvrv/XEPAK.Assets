@@ -282,6 +282,10 @@ body {
     padding-right: 14px;
 }
 
+.human-body svg > path {
+    transition: fill 0.3s ease-in-out;
+}
+
 .health-info {
     display: flex;
     flex-direction: column;
