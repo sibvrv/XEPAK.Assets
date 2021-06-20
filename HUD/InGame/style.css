@@ -291,3 +291,13 @@ body {
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.compass-tape {
+    position: absolute;
+    width: 50%;
+    height: 60px;
+    margin-left: 25%;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+}
