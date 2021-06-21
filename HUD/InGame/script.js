@@ -3,6 +3,18 @@ var hud = function () {
     this.damage = 50;
     this.maxHealth = 250;
     this.currentHealth = this.maxHealth;
+    this.navDirection = 0;
+
+    this.updateDirection = (() => {
+        const compassElements = document.querySelector(".compass-tape");
+        return (value) => {
+            console.log(value);
+
+            xValue = Math.floor( -value / 360 * 4000 );
+
+            compassElements.style.backgroundPositionX = `${xValue}px`;
+        }
+    })();
 
     this.updateBars = (() => {
         const healthUnitElements = document.querySelectorAll(".health-unit");
@@ -130,7 +142,10 @@ window.onload = function () {
     gui.add(fpshud, 'damageStomach');
     gui.add(fpshud, 'damageLegs');
 
-
+    var navDirectionController = gui.add(fpshud, "navDirection", -180, 420);
+    navDirectionController.onChange(function (value) {
+        fpshud.updateDirection(value);
+    });
     maxHealthController.onFinishChange(function (value) {
         fpshud.resetHealth();
     });
