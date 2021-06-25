@@ -10,7 +10,7 @@ var hud = function () {
         return (value) => {
             console.log(value);
 
-            xValue = Math.floor( -value / 360 * 4000 );
+            xValue = 400 + Math.floor( -value / 360 * 4000 );
 
             compassElements.style.backgroundPositionX = `${xValue}px`;
         }

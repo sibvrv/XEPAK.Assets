@@ -294,9 +294,11 @@ body {
 
 .compass-tape {
     position: absolute;
-    width: 50%;
+    width: 800px;
     height: 60px;
-    margin-left: 25%;
+    left: 50%;
+    top: 2vh;
+    margin-left: -400px;
     background-repeat: repeat-x;
     background-size: 4000px;
     background-position: 0 0;
