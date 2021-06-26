@@ -1,0 +1,21 @@
+.compass-tape {
+    position: absolute;
+    width: 800px;
+    height: 60px;
+    left: 50%;
+    top: 2vh;
+    margin-left: -400px;
+    background-repeat: repeat-x;
+    background-size: 4000px;
+    background-position: 0 0;
+}
+
+.compass-tape:after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 2px);
+    top: -6px;
+    height: 12px;
+    width: 4px;
+    background: #fff;
+}

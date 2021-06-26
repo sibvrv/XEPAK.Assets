@@ -1,0 +1,33 @@
+.crosshair {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15px, -15px);
+}
+
+.hit_indicator {
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.damage {
+    position: fixed;
+    height: 169px;
+    width: 169px;
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+
+    --stroke-width: 10px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top: var(--stroke-width) solid red;
+    border-bottom: var(--stroke-width) solid transparent;
+    border-left: var(--stroke-width) solid transparent;
+    border-right: var(--stroke-width) solid transparent;
+}
