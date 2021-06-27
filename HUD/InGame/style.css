@@ -5,7 +5,8 @@
 body {
     font-family: "Helvetica";
 
-    background: #000 url(https://topmmogames.org/upload/quake-champions/quake-champions-17.jpg);
+    background: url(https://topmmogames.org/upload/quake-champions/quake-champions-17.jpg);
+    background-color: #000;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
