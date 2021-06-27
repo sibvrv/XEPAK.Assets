@@ -15,8 +15,8 @@
 
 .damage {
     position: fixed;
-    height: 169px;
-    width: 169px;
+    height: 50vmin;
+    width: 50vmin;
     transform-origin: top left;
     transform: translate(-50%, -50%);
     top: 50%;

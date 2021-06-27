@@ -1,3 +1,7 @@
+var domCache = [];
+
+const dom = (selector) => domCache[selector] || (domCache[selector] = document.querySelector(selector));
+
 var hud = function () {
     this.direction = 45;
     this.damage = 50;
@@ -5,16 +9,12 @@ var hud = function () {
     this.currentHealth = this.maxHealth;
     this.navDirection = 0;
 
-    this.updateDirection = (() => {
-        const compassElements = document.querySelector(".compass-tape");
-        return (value) => {
-            console.log(value);
+    this.updateDirection = (value) => {
+        xValue = 400 + Math.floor(-value / 360 * 4000);
 
-            xValue = 400 + Math.floor( -value / 360 * 4000 );
-
-            compassElements.style.backgroundPositionX = `${xValue}px`;
-        }
-    })();
+        const compassElements = dom(".compass-tape");
+        compassElements.style.backgroundPositionX = `${xValue}px`;
+    };
 
     this.updateBars = (() => {
         const healthUnitElements = document.querySelectorAll(".health-unit");
@@ -31,18 +31,12 @@ var hud = function () {
     })();
 
     this.updateMaxHealth = (qty) => {
-        document.querySelector(".max-health").innerHTML = "/" + qty;
+        dom(".max-health").innerHTML = "/" + qty;
     };
 
     this.updateHealth = (qty) => {
-        if (qty > 0) {
-            this.currentHealth = qty;
-        } else {
-            this.currentHealth = 0;
-        }
-        document.querySelector(".current-health").innerHTML = this.currentHealth;
-
-        // const progress = this.currentHealth / this.maxHealth;
+        this.currentHealth = Math.max(0, qty);
+        dom(".current-health").innerHTML = this.currentHealth;
 
         this.updateBars();
     };
@@ -96,33 +90,29 @@ var hud = function () {
         this.updateHumanBody('legs', 'red');
     }
 
-    this.takeDamage = (() => {
-        const damageElement = document.querySelector(".damage");
-        return () => {
-            this.updateHealth(Math.floor(this.currentHealth - this.damage));
+    this.takeDamage = () => {
+        const damageElement = dom(".damage");
+        this.updateHealth(Math.floor(this.currentHealth - this.damage));
 
-            document.documentElement.style.setProperty("--blinktime", this.damage / 100 + 0.2 + "s"); //set how long damage indicator displays
+        document.documentElement.style.setProperty("--blinktime", this.damage / 100 + 0.2 + "s"); //set how long damage indicator displays
 
-            damageElement.style.setProperty("--stroke-width", this.damage / 10 + 5 + "px"); //set how thick the damage indicator is
-            damageElement.style.transform = "rotate(" + this.direction + "deg) translate(-50%,-50%)"; //set indicator's rotation
-            damageElement.classList.remove("blink");
+        damageElement.style.setProperty("--stroke-width", this.damage / 10 + 5 + "px"); //set how thick the damage indicator is
+        damageElement.style.transform = "rotate(" + this.direction + "deg) translate(-50%,-50%)"; //set indicator's rotation
+        damageElement.classList.remove("blink");
 
-            //now do some hack to replay the animation
-            setTimeout(function (time) {
-                damageElement.classList.add('blink');
-            }, 1);
-        }
-    })();
+        //now do some hack to replay the animation
+        setTimeout(function (time) {
+            damageElement.classList.add('blink');
+        }, 1);
+    };
 
-    this.hit = (() => {
-        const indicatorElement = document.querySelector(".hit_indicator");
-        return () => {
-            indicatorElement.classList.remove('hitBlink');
-            setTimeout(function (time) {
-                indicatorElement.classList.add('hitBlink');
-            }, 1);
-        }
-    })();
+    this.hit = () => {
+        const indicatorElement = dom(".hit_indicator");
+        indicatorElement.classList.remove('hitBlink');
+        setTimeout(function (time) {
+            indicatorElement.classList.add('hitBlink');
+        }, 1);
+    };
 };
 
 window.onload = function () {
