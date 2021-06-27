@@ -1,10 +1,35 @@
 .notice-block {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 90px;
+    right: 90px;
     color: #fff;
+    perspective: 500px;
+}
+
+.notice-inner {
+    transform: translateX(0) rotateY(-25deg) rotateZ(-4deg);
 }
 
 .notice {
     text-shadow: 2px 0 1px #000, 0 2px 1px #000, -2px 0 1px #000, 0 -2px 1px #000;
+}
+
+.player {
+
+}
+
+.player.attacker {
+    color: #57c9d5;
+}
+
+.player.victim {
+    color: #B22222;
+}
+
+.player.me {
+    color: #7FFF00;
+}
+
+.weapon {
+    color: #999999;
 }
